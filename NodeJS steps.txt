@@ -1,0 +1,12 @@
+1) All the node modules installed using npm install -g 
+   C:\Users\Oza Sagar\AppData\Roaming\npm\node_modules\create-react-native-app\build\index.js
+	
+  npm start will build the project and spin upp a development server. So this cool we still get the web development like features still using native app.
+  Expo will wrap our project and it will not install it on your phone.
+
+  npm run eject gives us the full capability to run the app in the full native mode.
+  npm install -g react-native-cli  -- to install native client and run commands
+react-native upgrade
+react-native link		
+
+2) In this case, <Text> is a built-in component that just displays some text and View is like the <div> or <span>.
