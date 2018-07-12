@@ -15,7 +15,8 @@ class InventoryForm extends React.Component {
             inventoryData: {
                     product_name: '',
                     barcode: ''
-                    },            
+                    },  
+            inventoryArray: [{}],          
             productNameError:'',
             barcodeError: ''
         }
@@ -24,7 +25,6 @@ class InventoryForm extends React.Component {
     updateForm(text, field) {
         if(field == 'product_name')
         {  
-            alert(JSON.stringify(this.state));
             inventoryData = {...this.state.inventoryData}
             inventoryData.product_name = text;
             this.setState({inventoryData});
@@ -39,7 +39,8 @@ class InventoryForm extends React.Component {
     }
 
     save = () => {
-
+        inventoryArray = {...this.state.inventoryArray};
+        console.log("Invenory Array", inventoryArray);
         data =  headerEnvelopeData + 
                 fieldTagNameOpen + this.state.inventoryData.product_name + fieldTagClose +
                 fieldTagBarcodeOpen + this.state.inventoryData.barcode + fieldTagClose +
@@ -58,7 +59,12 @@ class InventoryForm extends React.Component {
             },
             body: data
         })
-        .then(res => console.log(res))
+        .then(res => {console.log(res)
+            this.setState({
+                inventoryArray:[...this.state.inventoryArray, inventoryData]
+            })
+            console.log(JSON.stringify(this.state.inventoryArray))
+        })
         .catch(error => console.log(error))
        // https://sagaroza.quickbase.com/db/bnuczcvnn?a=API_AddRecord&_name=dfvgbhnjmk&_barcode=qwertyuiop&ticket=9_bnuiz4naj_b32xpr_maxt_a_-b_cyts7nbc3qxkx8d9sy3x63cpwvdbt5rqiudixqeuxb9sj6bidk3xymt_7sqq5n&apptoken=app_token=dfign5svc2md9bnksj36djzg58w
         // xml2js = require('react-native-xml2js');

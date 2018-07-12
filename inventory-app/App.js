@@ -10,6 +10,7 @@ export default class App extends React.Component {
         <StatusBar barStyle="light-content"/>
         <FixedHeader/>
         <InventoryForm/>
+        
       </ScrollView>
     );
   }
