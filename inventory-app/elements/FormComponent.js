@@ -20,7 +20,6 @@ const FormComponent = (props, inventoryData) => (
         <FormValidationMessage>
             Bar code is required
         </FormValidationMessage>
-        
     </View>
     )
 

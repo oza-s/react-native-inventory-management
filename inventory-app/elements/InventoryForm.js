@@ -81,7 +81,7 @@ class InventoryForm extends React.Component {
     render() {
         return (
             <View>
-                <FormComponent inventoryData={this.state.inventoryData} updateForm={this.updateForm}/>
+                <FormComponent updateForm={this.updateForm.bind(this)}/>
                 <ButtonComponent save={() => this.save}/>
             </View>
         )
