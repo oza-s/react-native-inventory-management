@@ -39,6 +39,11 @@ class InventoryForm extends React.Component {
     save = () => {
         inventoryArray = { ...this.state.inventoryArray };
         console.log("Invenory Array", inventoryArray);
+        if(this.state.inventoryData === "" || this.state.barcode === "")
+        {
+            console.log('Product Name and Barcode are mandatory!')
+            return;
+        }
         data = headerEnvelopeData +
             fieldTagNameOpen + this.state.inventoryData.product_name + fieldTagClose +
             fieldTagBarcodeOpen + this.state.inventoryData.barcode + fieldTagClose +
@@ -66,23 +71,15 @@ class InventoryForm extends React.Component {
                 console.log(JSON.stringify(this.state.inventoryArray))
                 alert("Inventory data saved")
             })
-            .catch(error => console.log(error))
+            .catch(error => 
+                {
+                    console.log(error)
+                alert("There was error while saving data!")
+                })
         // https://sagaroza.quickbase.com/db/bnuczcvnn?a=API_AddRecord&_name=dfvgbhnjmk&_barcode=qwertyuiop&ticket=9_bnuiz4naj_b32xpr_maxt_a_-b_cyts7nbc3qxkx8d9sy3x63cpwvdbt5rqiudixqeuxb9sj6bidk3xymt_7sqq5n&apptoken=app_token=dfign5svc2md9bnksj36djzg58w
         // xml2js = require('react-native-xml2js');
 
-        // const productNameError = validate('product_name', this.state.product_name)
-        // const barcodeError = validate('barcode', this.state.barcode)
-
-        // this.setState({
-        //     productNameError: productNameError,
-        //     barcodeError: barcodeError
-        // })
         console.log(this.state.inventoryData);
-        // if (!productNameError && !barcodeError) {
-        //   alert('Details are valid!')
-        // }
-
-
     }
 
     render() {
