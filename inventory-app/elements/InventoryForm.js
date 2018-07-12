@@ -24,6 +24,7 @@ class InventoryForm extends React.Component {
     updateForm(text, field) {
         if(field == 'product_name')
         {
+            
             alert(JSON.stringify(this.state));
             inventoryData = {...this.state.inventoryData}
             inventoryData.product_name = text;
