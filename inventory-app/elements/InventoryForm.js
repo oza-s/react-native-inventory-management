@@ -44,12 +44,16 @@ class InventoryForm extends React.Component {
 
     save = () => {
         
-        const data = '<qdbapi><ticket>9_bnuiz4naj_b32xpr_maxt_a_-b_cyts7nbc3qxkx8d9sy3x63cpwvdbt5rqiudixqeuxb9sj6bidk3xymt_7sqq5n</ticket><apptoken>dfign5svc2md9bnksj36djzg58w</apptoken><usertoken>b32xpr_maxt_9xin5bbb7spukc9hf588f4mf8z</usertoken><field name="name">party at Lindisfarne</field><field name="barcode">1234</field></qdbapi>'
+        data = `<qdbapi>
+            <ticket>9_bnui9ywiz_b32xpr_maxt_a_-b_dzatuyccndmv75bw34w5wd6mri22cv3s5dxdyhtny7c4djewsngv6g5_7s5jqq</ticket>
+            <apptoken>dfign5svc2md9bnksj36djzg58w</apptoken>
+            <usertoken>b32xpr_maxt_9xin5bbb7spukc9hf588f4mf8z</usertoken>
+            <field name="name">${this.state.inventoryData.product_name}</field>
+            <field name="barcode">${this.state.inventoryData.barcode}</field>
+            </qdbapi>`
 
-        const url = 'https://sagaroza.quickbase.com/db/bnuczcvnn?'  
-        // '&name=' + this.state.inventoryData.product_name + 
-        // '&barcode=' + this.state.inventoryData.barcode + '&ticket=9_bnuiz4naj_b32xpr_maxt_a_-b_cyts7nbc3qxkx8d9sy3x63cpwvdbt5rqiudixqeuxb9sj6bidk3xymt_7sqq5n&app_token=dfign5svc2md9bnksj36djzg58w'
-        console.log("URL", url);
+        url = 'https://sagaroza.quickbase.com/db/bnuczcvnn?a=API_AddRecord?'
+        console.log("URL", data);
         Alert.alert(JSON.stringify(this.state.inventoryData));
 
         fetch(url, {
