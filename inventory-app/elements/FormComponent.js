@@ -11,7 +11,7 @@ const FormComponent = (props, inventoryData) => (
         } />
         <FormValidationMessage>
             Product Name is required
-                </FormValidationMessage>
+        </FormValidationMessage>
 
         <FormLabel>Bar Code</FormLabel>
         <FormInput onChangeText={
@@ -19,7 +19,8 @@ const FormComponent = (props, inventoryData) => (
         } />
         <FormValidationMessage>
             Bar code is required
-                </FormValidationMessage>
+        </FormValidationMessage>
+        
     </View>
     )
 
