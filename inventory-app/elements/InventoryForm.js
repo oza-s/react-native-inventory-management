@@ -7,6 +7,7 @@ import { headerEnvelopeData, fieldTagNameOpen, fieldTagBarcodeOpen, fieldTagClos
 import { xml2js } from 'react-native-xml2js'
 import TableComponent from './TableComponent';
 import NativeTableComponent from './NativeTableComponent';
+//import BarcodeScan from './BarcodeScan'
 
 class InventoryForm extends React.Component {
     constructor(props) {
@@ -66,9 +67,14 @@ class InventoryForm extends React.Component {
             this.setState({ inventoryData });
         }
         else if (field == 'barcode') {
-            inventoryData = { ...this.state.inventoryData }
-            inventoryData.barcode = text;
-            this.setState({ inventoryData });
+            if (/^\d+$/.test(text)) {
+                inventoryData = { ...this.state.inventoryData }
+                inventoryData.barcode = text;
+                this.setState({ inventoryData });
+            }  
+            else{
+                alert('Only numbers allowed!')
+            }          
         }
     }
 
@@ -130,7 +136,7 @@ class InventoryForm extends React.Component {
             <View>
                 <FormComponent updateForm={this.updateForm.bind(this)} />
                 <ButtonComponent save={() => this.save} />
-
+                {/* <BarcodeScan/> */}
                 {/* <TableComponent dataSource={this.state.inventoryArray}/> */}
                 <NativeTableComponent dataSource={this.state.inventoryArray}/>
                 

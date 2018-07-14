@@ -5,10 +5,12 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 
 const FormComponent = (props, inventoryData) => (
     <View>
+
         <FormLabel>Product Name:</FormLabel>
         <FormInput onChangeText={
             text => props.updateForm(text, 'product_name')
         } autoFocus/>
+        
         <FormValidationMessage>
             Product Name is required
         </FormValidationMessage>
@@ -16,7 +18,8 @@ const FormComponent = (props, inventoryData) => (
         <FormLabel>Bar Code</FormLabel>
         <FormInput onChangeText={
             text => props.updateForm(text, 'barcode')
-        } autoFocus/>
+        } autoFocus keyboardType='numeric'/>
+        
         <FormValidationMessage>
             Bar code is required
         </FormValidationMessage>
