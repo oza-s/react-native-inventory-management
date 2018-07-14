@@ -8,7 +8,7 @@ const FormComponent = (props, inventoryData) => (
         <FormLabel>Product Name:</FormLabel>
         <FormInput onChangeText={
             text => props.updateForm(text, 'product_name')
-        } />
+        } autoFocus/>
         <FormValidationMessage>
             Product Name is required
         </FormValidationMessage>
@@ -16,7 +16,7 @@ const FormComponent = (props, inventoryData) => (
         <FormLabel>Bar Code</FormLabel>
         <FormInput onChangeText={
             text => props.updateForm(text, 'barcode')
-        } />
+        } autoFocus/>
         <FormValidationMessage>
             Bar code is required
         </FormValidationMessage>
