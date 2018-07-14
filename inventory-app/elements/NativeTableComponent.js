@@ -8,7 +8,7 @@ class NativeTableComponent extends Component {
 
     constructor(props) {
         super(props);
-        var tableHead = ['Product Name', 'Barcode'];
+        const tableHead = ['Product Name', 'Barcode'];
         console.log('NativeTable constructor')
         this.state = {
             inventoryArr: [{}]
@@ -19,7 +19,7 @@ class NativeTableComponent extends Component {
         console.log('NativeTable comp will mount')
     }
     shouldComponentUpdate(nextProps, nextState) {
-        //console.log('NativeTable should comp update', JSON.stringify(this.state))
+        
         console.log('NativeTable should comp update', JSON.stringify(nextState))
         if (nextState.inventoryArray != this.state.inventoryArr) {
             return true;
@@ -39,24 +39,17 @@ class NativeTableComponent extends Component {
         console.log('NativeTable comp did mount')
     }
     componentWillReceiveProps(nextProps, nextState) {
-        console.log('receive Props Native Table')
-        console.log('receive prps this', JSON.stringify(this.props))
-        console.log('receive prps', JSON.stringify(nextProps))
-        //this.inventoryArr = nextProps.dataSource; //this will have updated inventory array after push and api call
+        console.log('NativeTable comp receive Props ')
+       
         this.setState({
-            inventoryArr: nextProps.dataSource
+            inventoryArr: nextProps.dataSource //this will have updated inventory array after push and api call
         })
-        //console.log('componentwill receive props',JSON.stringify(this.state.inventoryArray))
-        //never set state here
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('compon did update Native Table')
-        console.log('componentidid update props', JSON.stringify(prevProps))
-        console.log('componentidid update state', JSON.stringify(prevState.inventoryArray))
+        console.log('NativeTable comp did update')
 
         if (prevProps.inventoryArray != this.props.inventoryArray) {
-            alert('Not equals')
             this.setState({ inventoryArray: this.props.inventoryArray })
             console.log('componentwill receive props', JSON.stringify(this.state.inventoryArray))
         }

@@ -25,18 +25,18 @@ class InventoryForm extends React.Component {
     }
     componentWillMount()
     {
-        console.log('Inverntory comp will mount')
+        console.log('Inventory will mount')
     }
     componentDidMount()
     {
-        console.log('Inverntory comp did mount')
+        console.log('Inventory did mount')
     }
     shouldComponentUpdate(nextProps, nextState)
     {
         console.log('Inventory should comp update')
         // We don't want to re render the NativeTable component.
         // If re-rendered then componentWillReceiveProps() of NativeTale will be triggered
-        // componentWillReceiveProps() is triggered beccause props are passed and not passed
+        // componentWillReceiveProps() is triggered because props are passed and not passed
         // so returning false
         if(nextState.inventoryArray != this.state.inventoryArray)
         {
@@ -58,7 +58,8 @@ class InventoryForm extends React.Component {
         console.log('Inventory comp will unmount')
     }
     updateForm(text, field) {
-        // when we are ready to change the state
+        // when we are ready to change the state use setState 
+        let inventoryData;
         if (field == 'product_name') {
             inventoryData = { ...this.state.inventoryData }
             inventoryData.product_name = text;
@@ -72,9 +73,9 @@ class InventoryForm extends React.Component {
     }
 
     save = () => {
+        let inventoryArray;
         inventoryArray = [...this.state.inventoryArray];
         const inventoryData = { ...this.state.inventoryData}
-        console.log('Save array before: ', JSON.stringify(inventoryArray))
         if(inventoryData.product_name === "")
         {
             console.log('Product Name is mandatory!')
@@ -93,7 +94,7 @@ class InventoryForm extends React.Component {
             rootTagClose
 
         url = productionBaseUrl;
-        console.log("URL", data);
+        console.log("Payload", data);
 
         fetch(url, {
             method: "POST",
@@ -108,14 +109,11 @@ class InventoryForm extends React.Component {
                 console.log(res)
                 let inventoryArrays = this.state.inventoryArray.slice();
                 inventoryArrays.push(inventoryData)
-                console.log('Array pushed:', JSON.stringify(inventoryArrays))
+                console.log('Inventory Array after push:', JSON.stringify(inventoryArrays))
                 this.setState({
                     inventoryArray: inventoryArrays
                 });
-                console.log('Response success & stringying array',JSON.stringify(this.state.inventoryArray))
-                console.log('Data pushed in array')
-                
-                //alert("Inventory data saved")
+                console.log('Response success: ',JSON.stringify(this.state.inventoryArray))
             })
             .catch(error => 
                 {
